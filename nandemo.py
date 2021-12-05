@@ -4,6 +4,7 @@ import re
 import string
 from enum import Enum, auto
 from pathlib import Path
+from tqdm import tqdm
 
 import deepl
 import docutils.parsers.rst
@@ -37,8 +38,10 @@ def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("FILENAME", type=str, help="")
     parser.add_argument("--check", action="store_true", help="")
+    parser.add_argument("--check_plain", action="store_true", help="")
     parser.add_argument("-n", type=int, help="")
     parser.add_argument("-o", type=str, help="")
+    parser.add_argument("--overwrite", action="store_true", help="")
     args = parser.parse_args()
 
     deepl_api_key_filepath = BASE_DIR_PATH / "deepl_api_key.txt"
@@ -56,8 +59,10 @@ def main():
     def translate(text):
         if args.check:
             translated_text = "[" + text + "]"
+        elif args.check_plain:
+            translated_text = text
         elif text in translation_memo:
-            return translation_memo[text]
+            translated_text = translation_memo[text]
         else:
             translated_text = str(translator.translate_text(text, target_lang="JA"))
             translation_memo[text] = translated_text
@@ -67,7 +72,7 @@ def main():
         S = string.ascii_uppercase.replace("A", "").replace("I", "")
         tmp = text[::]
         mapping = {}
-        result = re.findall(r"(``[^`]+``|`[^`]+`_|:ref:`[^`]+`)", text)
+        result = re.findall(r"(``[^`]+``|`[^`]+`_|:ref:`[^`]+`|`[^`]+`|\*\*[^\*]+\*\*)", text)
         cnt = 0
         for x in result:
             if x in mapping:
@@ -83,13 +88,40 @@ def main():
             text = text.replace(x, mapping[x])
         return text, mapping
 
-    def postprocess(text, mapping):
+    def postprocess(text: str, mapping):
         if not args.check:
             for k, v in mapping.items():
                 text = text.replace(v, " " + k + " ")
-        return text
+        return text.strip()
 
-    blocks = Path(args.FILENAME).open().read().split("\n\n")
+    def get_indent(line):
+        return len(line) - len(line.lstrip())
+
+    raw_rst = Path(args.FILENAME).open().read()
+    rst = raw_rst.replace(" note::", " note::\n").replace(" warning::", " warning::\n")
+    blocks = re.split(r"\n\n+", rst)
+    tmp_blocks = []
+    for block in blocks:
+        n_indent = get_indent(block)
+        if block.strip().startswith("* "):
+            ls = block.split("* ")
+            for l in ls[1:]:
+                tmp_blocks.append(" " * n_indent + "* " + l.strip())
+        elif block.strip().startswith("- "):
+            ls = block.split("- ")
+            for l in ls[1:]:
+                tmp_blocks.append(" " * n_indent + "- " + l.strip())
+        elif block.strip().startswith("#. "):
+            ls = block.split("#. ")
+            for l in ls[1:]:
+                tmp_blocks.append(" " * n_indent + "#. " + l.strip())
+        elif block.strip().startswith("1. "):
+            ls = re.split(r"\d\. ", block)
+            for i, l in enumerate(ls[1:]):
+                tmp_blocks.append(" " * n_indent + f"{i + 1}. " + l.strip())
+        else:
+            tmp_blocks.append(block)
+    blocks = tmp_blocks
 
     state = State.PLAIN
     new_blocks = []
@@ -97,59 +129,78 @@ def main():
     if args.n:
         blocks = blocks[:args.n]
 
-    for block in blocks:
-        if block.startswith(".. code-block::") or block.startswith(".. _"):
+    buf = ""
+
+    for block_i, block in tqdm(enumerate(blocks), total=len(blocks)):
+        first_line = block.split("\n")[0]
+
+        if block.startswith(".. code-block::") \
+            or block.startswith(".. _") \
+            or block.startswith(".. include::") \
+            or block.startswith(".. code::") \
+            or block.startswith(".. index::") \
+            or (block.startswith(".. ") and "::" not in first_line):
+
             state = State.SKIP
-            new_blocks.append(block)
+            new_blocks.append(block + "\n")
             continue
 
         if state == State.SKIP:
             if block.startswith(" "):
-                new_blocks.append(block)
+                new_blocks.append(block + "\n")
                 continue
             else:
                 state = State.PLAIN
 
         if state == State.PLAIN:
-            if block.startswith("**"):
-                new_blocks.append(block)
-            elif block.startswith(".. note::"):
-                head, body = block.split("::\n", 1)
-                text = " ".join([line.strip() for line in body.split("\n")])
-                text, mapping = preprocess(text)
-                text = translate(text)
-                text = postprocess(text, mapping)
-                new_block = head + "::\n" + text
-                new_blocks.append(new_block)
+            if "***" in block or "###" in block or "===" in block or "---" in block or "~~~" in block or "^^^" in block:
+                new_blocks.append(block + "\n")
             else:
-                if "===" in block or "---" in block:
-                    new_blocks.append(block)
+
+                n_indent = get_indent(block)
+                n_next_indent = get_indent(blocks[block_i + 1]) if block_i + 1 < len(blocks) else 0
+                text = block.replace("\n", " ")
+                # text = re.sub(r"\s+", " ", text)
+
+                prefix = ""
+                if text.startswith("* "):
+                    prefix = "* "
+                if text.startswith("- "):
+                    prefix = "- "
+                if text.startswith("#. "):
+                    prefix = "#. "
+                text = text[len(prefix):]
+
+                text = text.strip()
+                text, mapping = preprocess(text)
+                if " note::" in text or " warning::" in text:
+                    pass
                 else:
-                    bullet_list = False
-
-                    text = block.replace("\n", " ")
-                    text = re.sub(r"\s+", " ", text)
-                    if text.startswith("* "):
-                        bullet_list = True
-                        text = text[2:]
-                    text, mapping = preprocess(text)
                     text = translate(text)
-                    text = postprocess(text, mapping)
+                text = postprocess(text, mapping)
 
-                    new_block = ""
-                    for x in block.split("\n"):
-                        new_block += ".. " + x + "\n"
+                new_block = ""
+                for x in block.split("\n"):
+                    new_block += ".. " + x + "\n"
+
+                if n_next_indent == 0:
                     new_block += "\n"
-                    if bullet_list:
-                        new_block += "* " + text
-                    else:
-                        new_block += text
-                    new_blocks.append(new_block)
+
+                buf += (" " * n_indent)
+                buf += prefix + text + "\n\n"
+
+                if n_next_indent == 0:
+                    new_block += buf[:-1]
+                    buf = ""
+
+                new_blocks.append(new_block)
 
     if args.o:
-        Path(args.o).open("w").write("\n\n".join(new_blocks))
+        Path(args.o).open("w").write("\n".join(new_blocks))
+    elif args.overwrite:
+        Path(args.FILENAME).open("w").write("\n".join(new_blocks))
     else:
-        Path("result.rst").open("w").write("\n\n".join(new_blocks))
+        Path("result.rst").open("w").write("\n".join(new_blocks))
 
     TRANSLATION_MEMO_FILEPATH.open("w").write(json.dumps(translation_memo))
 
