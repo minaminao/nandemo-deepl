@@ -20,6 +20,9 @@ class State(Enum):
 
 
 def exp1(lines):
+    """
+    TODO: Use the docutils rst parser.
+    """
     parser = docutils.parsers.rst.Parser()
 
     components = (docutils.parsers.rst.Parser, )
@@ -57,7 +60,9 @@ def main():
         translation_memo = {}
 
     def translate(text):
-        if args.check:
+        if text == "":
+            translated_text = ""
+        elif args.check:
             translated_text = "[" + text + "]"
         elif args.check_plain:
             translated_text = text
@@ -69,7 +74,11 @@ def main():
         return translated_text
 
     def preprocess(text: str):
-        S = string.ascii_uppercase.replace("A", "").replace("I", "")
+        ids = []
+        S = string.ascii_uppercase
+        for a in S:
+            for b in S:
+                ids.append(a + b)
         tmp = text[::]
         mapping = {}
         result = re.findall(r"(``[^`]+``|`[^`]+`_|:ref:`[^`]+`|`[^`]+`|\*\*[^\*]+\*\*)", text)
@@ -78,7 +87,7 @@ def main():
             if x in mapping:
                 continue
             while True:
-                t = S[cnt] * 2
+                t = ids[cnt]
                 if t in tmp:
                     cnt += 1
                 else:
@@ -132,14 +141,16 @@ def main():
     buf = ""
 
     for block_i, block in tqdm(enumerate(blocks), total=len(blocks)):
-        first_line = block.split("\n")[0]
+        first_line = block.split("\n")[0].strip()
 
-        if block.startswith(".. code-block::") \
-            or block.startswith(".. _") \
-            or block.startswith(".. include::") \
-            or block.startswith(".. code::") \
-            or block.startswith(".. index::") \
-            or (block.startswith(".. ") and "::" not in first_line):
+        if block.lstrip().startswith(".. code-block::") \
+            or block.lstrip().startswith(".. _") \
+            or block.lstrip().startswith(".. include::") \
+            or block.lstrip().startswith(".. code::") \
+            or block.lstrip().startswith(".. index::") \
+            or block.lstrip().startswith(".. index:") \
+            or block.lstrip().startswith(".. literalinclude::") \
+            or (block.lstrip().startswith(".. ") and "::" not in first_line):
 
             state = State.SKIP
             new_blocks.append(block + "\n")
