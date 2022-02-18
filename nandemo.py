@@ -9,6 +9,7 @@ from tqdm import tqdm
 import deepl
 import docutils.parsers.rst
 import docutils.utils
+import mistletoe
 
 BASE_DIR_PATH = Path(__file__).parent
 TRANSLATION_MEMO_FILEPATH = BASE_DIR_PATH / "translation_memo.json"
@@ -37,41 +38,37 @@ def exp1(lines):
         print(node[:5])
 
 
-def main():
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("FILENAME", type=str, help="")
-    parser.add_argument("--check", action="store_true", help="")
-    parser.add_argument("--check_plain", action="store_true", help="")
-    parser.add_argument("-n", type=int, help="")
-    parser.add_argument("-o", type=str, help="")
-    parser.add_argument("--overwrite", action="store_true", help="")
-    args = parser.parse_args()
+deepl_api_key_filepath = BASE_DIR_PATH / "deepl_api_key.txt"
+if deepl_api_key_filepath.exists():
+    deepl_api_key = deepl_api_key_filepath.open().read().strip()
+    translator = deepl.Translator(deepl_api_key)
+else:
+    raise Exception("deepl_api_key.txt not found")
 
-    deepl_api_key_filepath = BASE_DIR_PATH / "deepl_api_key.txt"
-    if deepl_api_key_filepath.exists():
-        deepl_api_key = deepl_api_key_filepath.open().read().strip()
-        translator = deepl.Translator(deepl_api_key)
+if TRANSLATION_MEMO_FILEPATH.exists():
+    translation_memo = json.load(TRANSLATION_MEMO_FILEPATH.open())
+else:
+    translation_memo = {}
+
+
+def translate(text):
+    global args
+    if text == "":
+        translated_text = ""
+    elif args.check:
+        translated_text = "[" + text + "]"
+    elif args.check_plain:
+        translated_text = text
+    elif text in translation_memo:
+        translated_text = translation_memo[text]
     else:
-        raise Exception("deepl_api_key.txt not found")
+        translated_text = str(translator.translate_text(text, target_lang="JA"))
+        translation_memo[text] = translated_text
+    return translated_text
 
-    if TRANSLATION_MEMO_FILEPATH.exists():
-        translation_memo = json.load(TRANSLATION_MEMO_FILEPATH.open())
-    else:
-        translation_memo = {}
 
-    def translate(text):
-        if text == "":
-            translated_text = ""
-        elif args.check:
-            translated_text = "[" + text + "]"
-        elif args.check_plain:
-            translated_text = text
-        elif text in translation_memo:
-            translated_text = translation_memo[text]
-        else:
-            translated_text = str(translator.translate_text(text, target_lang="JA"))
-            translation_memo[text] = translated_text
-        return translated_text
+def translate_rst():
+    global args
 
     def preprocess(text: str):
         ids = []
@@ -212,6 +209,29 @@ def main():
         Path(args.FILENAME).open("w").write("\n".join(new_blocks))
     else:
         Path("result.rst").open("w").write("\n".join(new_blocks))
+
+
+def translate_md():
+    pass
+
+
+def main():
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("FILENAME", type=str, help="")
+    parser.add_argument("--check", action="store_true", help="")
+    parser.add_argument("--check_plain", action="store_true", help="")
+    parser.add_argument("-n", type=int, help="")
+    parser.add_argument("-o", type=str, help="output file")
+    parser.add_argument("--overwrite", action="store_true", help="")
+    parser.add_argument("--filetype", choices=["rst", "md"], help="")
+    args = parser.parse_args()
+
+    if args.filetype == "rst":
+        new_blocks = translate_rst()
+    elif args.filetype == "md":
+        new_blocks = translate_md()
+    else:
+        raise Exception("filetype not supported")
 
     TRANSLATION_MEMO_FILEPATH.open("w").write(json.dumps(translation_memo))
 
