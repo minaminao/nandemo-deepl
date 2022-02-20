@@ -9,7 +9,7 @@ from tqdm import tqdm
 import deepl
 import docutils.parsers.rst
 import docutils.utils
-import mistletoe
+from mistletoe import Document, ast_renderer 
 
 BASE_DIR_PATH = Path(__file__).parent
 TRANSLATION_MEMO_FILEPATH = BASE_DIR_PATH / "translation_memo.json"
@@ -36,7 +36,6 @@ def exp1(lines):
     print(type(document))
     for node in document:
         print(node[:5])
-
 
 deepl_api_key_filepath = BASE_DIR_PATH / "deepl_api_key.txt"
 if deepl_api_key_filepath.exists():
@@ -212,10 +211,17 @@ def translate_rst():
 
 
 def translate_md():
-    pass
+    global args
+
+    file = Path(args.FILENAME).open("r")
+    doc = Document(file)
+    ast = ast_renderer.get_ast(doc)
+    print(json.dumps(ast))
 
 
 def main():
+    global args
+
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("FILENAME", type=str, help="")
     parser.add_argument("--check", action="store_true", help="")
