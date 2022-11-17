@@ -2,8 +2,8 @@
 Nandemo DeepL is a tool to translate various file formats with DeepL.
 
 ## Supported File Formats
+- Markdown (.md)
 - reStructuredText (.rst)
-<!-- - Python (.py) -->
 
 ## Install
 ```sh

@@ -1,0 +1,1528 @@
+{
+    "type": "Document",
+    "footnotes": {
+        "arbitrary case-insensitive reference text": [
+            "https://www.mozilla.org",
+            ""
+        ],
+        "1": [
+            "http://slashdot.org",
+            ""
+        ],
+        "link text itself": [
+            "http://www.reddit.com",
+            ""
+        ],
+        "logo": [
+            "https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png",
+            "Logo Title Text 2"
+        ]
+    },
+    "children": [
+        {
+            "type": "Heading",
+            "level": 1,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Sample"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Ref: "
+                },
+                {
+                    "type": "Link",
+                    "target": "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
+                    "title": "",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "Markdown Cheatsheet \u00b7 adam-p/markdown-here Wiki"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Headers"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 1,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "H1"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "H2"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 3,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "H3"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 4,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "H4"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 5,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "H5"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 6,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "H6"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Alternatively, for H1 and H2, an underline-ish style:"
+                }
+            ]
+        },
+        {
+            "type": "SetextHeading",
+            "level": 1,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Alt-H1"
+                }
+            ]
+        },
+        {
+            "type": "SetextHeading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Alt-H2"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Emphasis"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Emphasis, aka italics, with "
+                },
+                {
+                    "type": "Emphasis",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "asterisks"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": " or "
+                },
+                {
+                    "type": "Emphasis",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "underscores"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": "."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Strong emphasis, aka bold, with "
+                },
+                {
+                    "type": "Strong",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "asterisks"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": " or "
+                },
+                {
+                    "type": "Strong",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "underscores"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": "."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Combined emphasis with "
+                },
+                {
+                    "type": "Strong",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "asterisks and "
+                        },
+                        {
+                            "type": "Emphasis",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "underscores"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": "."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Strikethrough uses two tildes. "
+                },
+                {
+                    "type": "Strikethrough",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "Scratch this."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Lists"
+                }
+            ]
+        },
+        {
+            "type": "List",
+            "children": [
+                {
+                    "type": "ListItem",
+                    "leader": "1.",
+                    "prepend": 3,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "First ordered list item"
+                                }
+                            ]
+                        }
+                    ],
+                    "loose": false
+                },
+                {
+                    "type": "ListItem",
+                    "leader": "2.",
+                    "prepend": 3,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "Another item"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "List",
+                            "children": [
+                                {
+                                    "type": "ListItem",
+                                    "leader": "*",
+                                    "prepend": 2,
+                                    "children": [
+                                        {
+                                            "type": "Paragraph",
+                                            "children": [
+                                                {
+                                                    "type": "RawText",
+                                                    "content": "Unordered sub-list."
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "loose": false
+                                }
+                            ],
+                            "loose": false,
+                            "start": null
+                        }
+                    ],
+                    "loose": false
+                },
+                {
+                    "type": "ListItem",
+                    "leader": "1.",
+                    "prepend": 3,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "Actual numbers don't matter, just that it's a number"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "List",
+                            "children": [
+                                {
+                                    "type": "ListItem",
+                                    "leader": "1.",
+                                    "prepend": 3,
+                                    "children": [
+                                        {
+                                            "type": "Paragraph",
+                                            "children": [
+                                                {
+                                                    "type": "RawText",
+                                                    "content": "Ordered sub-list"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "loose": false
+                                }
+                            ],
+                            "loose": false,
+                            "start": 1
+                        }
+                    ],
+                    "loose": false
+                },
+                {
+                    "type": "ListItem",
+                    "leader": "2.",
+                    "prepend": 3,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "And another item."
+                                }
+                            ]
+                        }
+                    ],
+                    "loose": false
+                }
+            ],
+            "loose": false,
+            "start": 1
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown)."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "To have a line break without a paragraph, you will need to use two trailing spaces.\u22c5\u22c5"
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "Note that this line is separate, but within the same paragraph."
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)"
+                }
+            ]
+        },
+        {
+            "type": "List",
+            "children": [
+                {
+                    "type": "ListItem",
+                    "leader": "*",
+                    "prepend": 2,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "Unordered list can use asterisks"
+                                }
+                            ]
+                        }
+                    ],
+                    "loose": false
+                }
+            ],
+            "loose": false,
+            "start": null
+        },
+        {
+            "type": "List",
+            "children": [
+                {
+                    "type": "ListItem",
+                    "leader": "-",
+                    "prepend": 2,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "Or minuses"
+                                }
+                            ]
+                        }
+                    ],
+                    "loose": false
+                }
+            ],
+            "loose": false,
+            "start": null
+        },
+        {
+            "type": "List",
+            "children": [
+                {
+                    "type": "ListItem",
+                    "leader": "+",
+                    "prepend": 2,
+                    "children": [
+                        {
+                            "type": "Paragraph",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "Or pluses"
+                                }
+                            ]
+                        }
+                    ],
+                    "loose": false
+                }
+            ],
+            "loose": false,
+            "start": null
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Links"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "Link",
+                    "target": "https://www.google.com",
+                    "title": "",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "I'm an inline-style link"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "Link",
+                    "target": "https://www.google.com",
+                    "title": "Google's Homepage",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "I'm an inline-style link with title"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "Link",
+                    "target": "https://www.mozilla.org",
+                    "title": "",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "I'm a reference-style link"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "Link",
+                    "target": "../blob/master/LICENSE",
+                    "title": "",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "I'm a relative reference to a repository file"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "Link",
+                    "target": "http://slashdot.org",
+                    "title": "",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "You can use numbers for reference-style link definitions"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Or leave it empty and use the "
+                },
+                {
+                    "type": "Link",
+                    "target": "http://www.reddit.com",
+                    "title": "",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "link text itself"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": "."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "URLs and URLs in angle brackets will automatically get turned into links."
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "http://www.example.com or "
+                },
+                {
+                    "type": "AutoLink",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "http://www.example.com"
+                        }
+                    ],
+                    "target": "http://www.example.com",
+                    "mailto": false
+                },
+                {
+                    "type": "RawText",
+                    "content": " and sometimes"
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "example.com (but not on Github, for example)."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Some text to show that the reference links can follow later."
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Images"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Here's our logo (hover to see the title text):"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Inline-style:"
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "Image",
+                    "src": "https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png",
+                    "title": "Logo Title Text 1",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "alt text"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Reference-style:"
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "Image",
+                    "src": "https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png",
+                    "title": "Logo Title Text 2",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "alt text"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Code and Syntax Highlighting"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Inline "
+                },
+                {
+                    "type": "InlineCode",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "code"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": " has "
+                },
+                {
+                    "type": "InlineCode",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "back-ticks around"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": " it."
+                }
+            ]
+        },
+        {
+            "type": "CodeFence",
+            "language": "javascript",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "var s = \"JavaScript syntax highlighting\";\nalert(s);\n"
+                }
+            ]
+        },
+        {
+            "type": "CodeFence",
+            "language": "python",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "s = \"Python syntax highlighting\"\nprint s\n"
+                }
+            ]
+        },
+        {
+            "type": "CodeFence",
+            "language": "",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "No language indicated, so no syntax highlighting. \nBut let's throw in a <b>tag</b>.\n"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Tables"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Colons can be used to align columns."
+                }
+            ]
+        },
+        {
+            "type": "Table",
+            "column_align": [
+                null,
+                0,
+                1
+            ],
+            "header": {
+                "type": "TableRow",
+                "row_align": [
+                    null,
+                    0,
+                    1
+                ],
+                "children": [
+                    {
+                        "type": "TableCell",
+                        "align": null,
+                        "children": [
+                            {
+                                "type": "RawText",
+                                "content": "Tables"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TableCell",
+                        "align": 0,
+                        "children": [
+                            {
+                                "type": "RawText",
+                                "content": "Are"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TableCell",
+                        "align": 1,
+                        "children": [
+                            {
+                                "type": "RawText",
+                                "content": "Cool"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "type": "TableRow",
+                    "row_align": [
+                        null,
+                        0,
+                        1
+                    ],
+                    "children": [
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "col 3 is"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": 0,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "right-aligned"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": 1,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "$1600"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRow",
+                    "row_align": [
+                        null,
+                        0,
+                        1
+                    ],
+                    "children": [
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "col 2 is"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": 0,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "centered"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": 1,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "$12"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRow",
+                    "row_align": [
+                        null,
+                        0,
+                        1
+                    ],
+                    "children": [
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "zebra stripes"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": 0,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "are neat"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": 1,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "$1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "There must be at least 3 dashes separating each header cell."
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "The outer pipes (|) are optional, and you don't need to make the"
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "raw Markdown line up prettily. You can also use inline Markdown."
+                }
+            ]
+        },
+        {
+            "type": "Table",
+            "column_align": [
+                null,
+                null,
+                null
+            ],
+            "header": {
+                "type": "TableRow",
+                "row_align": [
+                    null,
+                    null,
+                    null
+                ],
+                "children": [
+                    {
+                        "type": "TableCell",
+                        "align": null,
+                        "children": [
+                            {
+                                "type": "RawText",
+                                "content": "Markdown"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TableCell",
+                        "align": null,
+                        "children": [
+                            {
+                                "type": "RawText",
+                                "content": "Less"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TableCell",
+                        "align": null,
+                        "children": [
+                            {
+                                "type": "RawText",
+                                "content": "Pretty"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "type": "TableRow",
+                    "row_align": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "children": [
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "Emphasis",
+                                    "children": [
+                                        {
+                                            "type": "RawText",
+                                            "content": "Still"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "InlineCode",
+                                    "children": [
+                                        {
+                                            "type": "RawText",
+                                            "content": "renders"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "Strong",
+                                    "children": [
+                                        {
+                                            "type": "RawText",
+                                            "content": "nicely"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRow",
+                    "row_align": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "children": [
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "1"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "2"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "align": null,
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "3"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Blockquotes"
+                }
+            ]
+        },
+        {
+            "type": "Quote",
+            "children": [
+                {
+                    "type": "Paragraph",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "Blockquotes are very handy in email to emulate reply text."
+                        },
+                        {
+                            "type": "LineBreak",
+                            "soft": true,
+                            "content": ""
+                        },
+                        {
+                            "type": "RawText",
+                            "content": "This line is part of the same quote."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Quote break."
+                }
+            ]
+        },
+        {
+            "type": "Quote",
+            "children": [
+                {
+                    "type": "Paragraph",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can "
+                        },
+                        {
+                            "type": "Emphasis",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "put"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "RawText",
+                            "content": " "
+                        },
+                        {
+                            "type": "Strong",
+                            "children": [
+                                {
+                                    "type": "RawText",
+                                    "content": "Markdown"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "RawText",
+                            "content": " into a blockquote."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Inline HTML"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "<dl>"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "<dt>Definition list</dt>"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "<dd>Is something people use sometimes.</dd>"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "<dt>Markdown in HTML</dt>"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "<dd>Does "
+                },
+                {
+                    "type": "Emphasis",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "not"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": " work "
+                },
+                {
+                    "type": "Strong",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "very"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": " well. Use HTML <em>tags</em>.</dd>"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "</dl>"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Horizontal Rule"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Three or more..."
+                }
+            ]
+        },
+        {
+            "type": "ThematicBreak"
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Hyphens"
+                }
+            ]
+        },
+        {
+            "type": "ThematicBreak"
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Asterisks"
+                }
+            ]
+        },
+        {
+            "type": "ThematicBreak"
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Underscores"
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Line Breaks"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "Here's a line for us to start with."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "This line is separated from the one above by two newlines, so it will be a "
+                },
+                {
+                    "type": "Emphasis",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "separate paragraph"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": "."
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "This line is also a separate paragraph, but..."
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "This line is only separated by a single newline, so it's a separate line in the "
+                },
+                {
+                    "type": "Emphasis",
+                    "children": [
+                        {
+                            "type": "RawText",
+                            "content": "same paragraph"
+                        }
+                    ]
+                },
+                {
+                    "type": "RawText",
+                    "content": "."
+                }
+            ]
+        },
+        {
+            "type": "Heading",
+            "level": 2,
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "YouTube Videos"
+                }
+            ]
+        },
+        {
+            "type": "Paragraph",
+            "children": [
+                {
+                    "type": "RawText",
+                    "content": "<a href=\"http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE"
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "\" target=\"_blank\"><img src=\"http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg\""
+                },
+                {
+                    "type": "LineBreak",
+                    "soft": true,
+                    "content": ""
+                },
+                {
+                    "type": "RawText",
+                    "content": "alt=\"IMAGE ALT TEXT HERE\" width=\"240\" height=\"180\" border=\"10\" /></a>"
+                }
+            ]
+        }
+    ]
+}
