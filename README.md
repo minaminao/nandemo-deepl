@@ -5,9 +5,13 @@ Nandemo DeepL is a tool to translate various file formats with DeepL.
 - reStructuredText (.rst)
 <!-- - Python (.py) -->
 
-## Usage
-
+## Install
 ```sh
-source alias.sh
+pip install .
+```
+
+## Usage
+```sh
+export DEEPL_API_KEY=foo
 nandemo foo.rst -o foo.rst
 ```

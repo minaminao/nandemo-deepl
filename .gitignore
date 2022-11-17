@@ -1,3 +1,7 @@
-deepl_api_key.txt
 translation_memo.json
 .vscode
+.DS_Store
+.env
+
+build
+*.egg-info
