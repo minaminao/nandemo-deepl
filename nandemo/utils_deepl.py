@@ -5,6 +5,7 @@ def translate(translator, text, translation_memo, check=False):
     if text == "":
         translated_text = ""
     elif check:
+        print("[DEBUG] check translate:", text, file=sys.stderr)
         translated_text = text
     elif text in translation_memo:
         translated_text = translation_memo[text]

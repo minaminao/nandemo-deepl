@@ -96,9 +96,6 @@ def translate_rst(args, translator, translation_memo):
     state = State.PLAIN
     new_blocks = []
 
-    if args.n:
-        blocks = blocks[:args.n]
-
     buf = ""
 
     for block_i, block in tqdm(enumerate(blocks), total=len(blocks)):
@@ -149,8 +146,6 @@ def translate_rst(args, translator, translation_memo):
                     pass
                 else:
                     text = translate(translator, text, translation_memo, args.check)
-                    if args.check_plain:
-                        text = "[" + text + "]"
                 text = postprocess(text, mapping)
 
                 new_block = ""
@@ -168,10 +163,5 @@ def translate_rst(args, translator, translation_memo):
                     buf = ""
 
                 new_blocks.append(new_block)
-
-    if args.o:
-        Path(args.o).open("w").write("\n".join(new_blocks))
-    elif args.overwrite:
-        Path(args.FILENAME).open("w").write("\n".join(new_blocks))
-    else:
-        Path("result.rst").open("w").write("\n".join(new_blocks))
+    
+    return "\n".join(new_blocks)
