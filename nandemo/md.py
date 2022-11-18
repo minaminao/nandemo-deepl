@@ -151,6 +151,8 @@ def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_
             text += "> " + text_children
         case "ThematicBreak":
             text += "---\n"
+        case "EscapeSequence":
+            text += "\\" + "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
         case _:
             assert False, json.dumps(node)
     return text
