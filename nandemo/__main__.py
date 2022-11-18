@@ -45,7 +45,10 @@ def main():
     if args.output:
         Path(args.output).open("w").write(result)
     elif args.overwrite:
-        Path(args.FILENAME + ".backup").open("w").write(Path(args.FILENAME).open("r").read())
+        if args.backup:
+            stem = Path(args.FILENAME).stem
+            suffix = Path(args.FILENAME).suffix
+            Path(stem + ".backup" + suffix).open("w").write(Path(args.FILENAME).open("r").read())
         Path(args.FILENAME).open("w").write(result)
     else:
         print(result)
