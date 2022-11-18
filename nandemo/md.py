@@ -11,6 +11,12 @@ html_pattern = re.compile(r"(<(\".*?\"|'.*?'|[^'\"])*?>)+", re.MULTILINE | re.DO
 def get_constant_id(mapping):
     return "X" + str(len(mapping)).zfill(2)
 
+def postprocess(text: str, mapping: dict):
+    sorted_mapping = sorted(mapping.items(), reverse=True)
+    for constant_id, constant in sorted_mapping:
+        text = text.replace(constant_id, constant)
+    return text
+
 def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_memo=None, check=False) -> str:
     text = ""
     match node["type"]:
@@ -30,9 +36,7 @@ def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_
                 paragraph = constant_id
             if translator:
                 paragraph = translate(translator, paragraph, translation_memo, check)
-                sorted_mapping = sorted(mapping.items(), reverse=True)
-                for constant_id, constant in sorted_mapping:
-                    paragraph = paragraph.replace(constant_id, constant)
+                paragraph = postprocess(paragraph, mapping)
             text += paragraph + "\n\n"
         case "Link":
             text_children = "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
@@ -117,7 +121,31 @@ def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_
             text_children = "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
             text += "```" + node["language"] + "\n" + text_children + "```\n"
         case "Table":
-            pass
+            mapping = {}
+            column_align = node["column_align"]
+            table = node_to_text(node["header"], list_depth, translator, mapping, translation_memo, check)
+            table += ""
+            for align in column_align:
+                table += "|"
+                match align:
+                    case None:
+                        table += "-"
+                    case 0:
+                        table += ":-:"
+                    case 1:
+                        table += "-:"
+                    case _:
+                        assert False
+            table += "|\n"
+            table += "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
+            table += "\n"
+            text += postprocess(table, mapping)
+        case "TableRow":
+            text_children = "|".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
+            text += "|" + text_children + "|\n"
+        case "TableCell":
+            text_children = "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
+            text += text_children
         case "Quote":
             text_children = "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
             text += "> " + text_children
