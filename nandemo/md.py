@@ -23,7 +23,6 @@ def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_
         case "Document":
             text += "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
         case "Heading":
-            assert len(node["children"]) == 1
             text += ("#" * node["level"]) + " " + node_to_text(node["children"][0]) + "\n"
         case "RawText":
             text += node["content"]

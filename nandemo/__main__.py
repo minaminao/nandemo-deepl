@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--overwrite", action="store_true", help="")
     parser.add_argument("--filetype", choices=["rst", "md"], help="")
     parser.add_argument("--ast", action="store_true", help="")
+    parser.add_argument("--backup", action="store_true", help="")
     args = parser.parse_args()
 
     DEEPL_API_KEY = os.getenv("DEEPL_API_KEY")
@@ -44,6 +45,7 @@ def main():
     if args.output:
         Path(args.output).open("w").write(result)
     elif args.overwrite:
+        Path(args.FILENAME + ".backup").open("w").write(Path(args.FILENAME).open("r").read())
         Path(args.FILENAME).open("w").write(result)
     else:
         print(result)
