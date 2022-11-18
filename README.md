@@ -12,6 +12,6 @@ pip install .
 
 ## Usage
 ```sh
-export DEEPL_API_KEY=foo
-nandemo foo.rst -o foo.rst
+export DEEPL_API_KEY=<YOUR API KEY>
+nandemo samples/sample.md
 ```

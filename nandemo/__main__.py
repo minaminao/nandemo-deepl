@@ -36,7 +36,7 @@ def main():
             result = translate_rst(args, translator, translation_memo)
         case "md":
             result = translate_md(args, translator, translation_memo)
-        case "_":
+        case _:
             raise Exception("filetype not supported")
 
     TRANSLATION_MEMO_FILEPATH.open("w").write(json.dumps(translation_memo))
