@@ -153,6 +153,9 @@ def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_
             text += "---\n"
         case "EscapeSequence":
             text += "\\" + "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
+        case "BlockCode":
+            text_children = "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
+            text += text_children
         case _:
             assert False, json.dumps(node)
     return text
