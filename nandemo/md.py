@@ -4,7 +4,7 @@ from pathlib import Path
 
 from mistletoe import Document, ast_renderer
 
-from .utils_deepl import *
+from .utils_deepl import translate
 
 html_pattern = re.compile(r"(<(\".*?\"|'.*?'|[^'\"])*?>)+", re.MULTILINE | re.DOTALL)
 

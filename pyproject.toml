@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "nandemo-deepl"
+version = "0.1.0"
+description = ""
+authors = ["minaminao <minaminaoy@gmail.com>"]
+readme = "README.md"
+packages = [{include = "nandemo"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+deepl = "^1.14.0"
+mistletoe = "^1.0.1"
+docutils = "^0.18"
+tqdm = "^4.65.0"
+
+[tool.poetry.scripts]
+nandemo = "nandemo.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 200

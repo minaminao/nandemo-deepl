@@ -1,3 +1,2 @@
-fmt:
-	isort *.py
-	isort nandemo/*.py
+check:
+	ruff check .

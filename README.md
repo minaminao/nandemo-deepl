@@ -7,7 +7,7 @@ Nandemo DeepL is a tool to translate various file formats with DeepL.
 
 ## Install
 ```sh
-pip install .
+pip install -e .
 ```
 
 ## Usage
@@ -15,3 +15,13 @@ pip install .
 export DEEPL_API_KEY=<YOUR API KEY>
 nandemo samples/sample.md
 ```
+
+```sh
+nandemo foo/*.md
+```
+
+Back up the original files:
+```
+nandemo --backup foo/*.md
+```
+

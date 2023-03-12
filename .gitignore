@@ -5,3 +5,7 @@ translation_memo.json
 
 build
 *.egg-info
+
+__pycache__
+
+.ruff_cache

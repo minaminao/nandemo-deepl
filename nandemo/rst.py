@@ -7,7 +7,7 @@ import docutils.parsers.rst
 import docutils.utils
 from tqdm import tqdm
 
-from .utils_deepl import *
+from .utils_deepl import translate
 
 
 class State(Enum):
@@ -74,21 +74,21 @@ def translate_rst(args, translator, translation_memo):
     for block in blocks:
         n_indent = get_indent(block)
         if block.strip().startswith("* "):
-            ls = block.split("* ")
-            for l in ls[1:]:
-                tmp_blocks.append(" " * n_indent + "* " + l.strip())
+            lines = block.split("* ")
+            for line in lines[1:]:
+                tmp_blocks.append(" " * n_indent + "* " + line.strip())
         elif block.strip().startswith("- "):
-            ls = block.split("- ")
-            for l in ls[1:]:
-                tmp_blocks.append(" " * n_indent + "- " + l.strip())
+            lines = block.split("- ")
+            for line in lines[1:]:
+                tmp_blocks.append(" " * n_indent + "- " + line.strip())
         elif block.strip().startswith("#. "):
-            ls = block.split("#. ")
-            for l in ls[1:]:
-                tmp_blocks.append(" " * n_indent + "#. " + l.strip())
+            lines = block.split("#. ")
+            for line in lines[1:]:
+                tmp_blocks.append(" " * n_indent + "#. " + line.strip())
         elif block.strip().startswith("1. "):
-            ls = re.split(r"\d\. ", block)
-            for i, l in enumerate(ls[1:]):
-                tmp_blocks.append(" " * n_indent + f"{i + 1}. " + l.strip())
+            lines = re.split(r"\d\. ", block)
+            for i, line in enumerate(lines[1:]):
+                tmp_blocks.append(" " * n_indent + f"{i + 1}. " + line.strip())
         else:
             tmp_blocks.append(block)
     blocks = tmp_blocks
