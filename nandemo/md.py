@@ -80,12 +80,15 @@ def node_to_text(node, list_depth=0, translator=None, mapping=None, translation_
             else:
                 text += converted_text
         case "List":
-            # TODO: loose, start
             text_children = "".join([node_to_text(child, list_depth + 1, translator, mapping, translation_memo, check) for child in node["children"]])
             text += text_children
+            if not node["loose"]:
+                text += "\n"
         case "ListItem":
             text_children = "".join([node_to_text(child, list_depth, translator, mapping, translation_memo, check) for child in node["children"]])
             text += ("  " * (list_depth - 1)) + node["leader"] + " " + text_children
+            if not node["loose"]:
+                text = text.rstrip() + "\n"
         case "LineBreak":
             text += "\n"
         case "AutoLink":

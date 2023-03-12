@@ -12,6 +12,7 @@ deepl = "^1.14.0"
 mistletoe = "^1.0.1"
 docutils = "^0.18"
 tqdm = "^4.65.0"
+colorama = "^0.4.6"
 
 [tool.poetry.scripts]
 nandemo = "nandemo.__main__:main"
